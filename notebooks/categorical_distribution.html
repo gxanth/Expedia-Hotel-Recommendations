@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"$schema": "https://vega.github.io/schema/vega/v5.json", "data": [{"name": "source_0", "values": [{"booking_bool": 0, "category": "B", "proportion": 9.8, "sum_proportion": 9.8}, {"booking_bool": 0, "category": "C", "proportion": 9.4, "sum_proportion": 9.4}, {"booking_bool": 0, "category": "C", "proportion": 9.2, "sum_proportion": 9.2}, {"booking_bool": 0, "category": "B", "proportion": 9.0, "sum_proportion": 9.0}, {"booking_bool": 1, "category": "B", "proportion": 8.9, "sum_proportion": 8.9}, {"booking_bool": 1, "category": "A", "proportion": 8.799999999999999, "sum_proportion": 8.799999999999999}, {"booking_bool": 1, "category": "C", "proportion": 8.5, "sum_proportion": 8.5}, {"booking_bool": 1, "category": "C", "proportion": 8.4, "sum_proportion": 8.4}, {"booking_bool": 0, "category": "A", "proportion": 7.8, "sum_proportion": 7.8}, {"booking_bool": 0, "category": "A", "proportion": 7.7, "sum_proportion": 7.7}, {"booking_bool": 1, "category": "A", "proportion": 6.800000000000001, "sum_proportion": 6.800000000000001}, {"booking_bool": 1, "category": "B", "proportion": 5.7, "sum_proportion": 5.7}]}, {"name": "source_0_x_domain_category", "values": [{"category": "B"}, {"category": "C"}, {"category": "A"}]}, {"name": "source_0_y_domain_proportion", "values": [{"min": 5.7, "max": 9.8}]}, {"name": "source_0_xOffset_domain_booking_bool", "values": [{"booking_bool": 0}, {"booking_bool": 1}]}, {"name": "source_0_color_domain_booking_bool", "values": [{"booking_bool": 0}, {"booking_bool": 1}]}], "marks": [{"type": "rect", "name": "marks", "from": {"data": "source_0"}, "encode": {"update": {"y": {"field": "proportion", "scale": "y"}, "x": {"field": "category", "scale": "x", "offset": {"field": "booking_bool", "scale": "xOffset"}}, "y2": {"value": 0, "scale": "y"}, "fill": {"field": "booking_bool", "scale": "color"}, "tooltip": {"signal": "{\"Category\": isValid(datum[\"category\"]) ? datum[\"category\"] : \"\"+datum[\"category\"], \"Total Percentage\": format(datum[\"sum_proportion\"], \".2f\"), \"Booking Status\": isValid(datum[\"booking_bool\"]) ? datum[\"booking_bool\"] : \"\"+datum[\"booking_bool\"]}"}, "opacity": {"value": 0.8}, "width": {"signal": "max(0.25, bandwidth('xOffset'))"}}}, "style": ["bar"]}], "scales": [{"name": "x", "type": "band", "domain": {"data": "source_0_x_domain_category", "field": "category", "sort": true}, "range": [0, {"signal": "width"}], "paddingOuter": 0.2, "paddingInner": 0.2}, {"name": "y", "type": "linear", "domain": [{"signal": "(data(\"source_0_y_domain_proportion\")[0] || {}).min"}, {"signal": "(data(\"source_0_y_domain_proportion\")[0] || {}).max"}], "range": [{"signal": "height"}, 0], "zero": true, "nice": true}, {"name": "xOffset", "type": "band", "domain": {"data": "source_0_xOffset_domain_booking_bool", "field": "booking_bool", "sort": true}, "range": [0, {"signal": "bandwidth('x')"}]}, {"name": "color", "type": "ordinal", "domain": {"data": "source_0_color_domain_booking_bool", "field": "booking_bool", "sort": true}, "range": "category"}], "axes": [{"scale": "y", "gridScale": "x", "domain": false, "labels": false, "maxExtent": 0, "ticks": false, "zindex": 0, "tickCount": {"signal": "ceil(height/40)"}, "orient": "left", "aria": false, "minExtent": 0, "grid": true}, {"scale": "x", "labelAngle": 270, "labelBaseline": "middle", "title": "Category", "orient": "bottom", "grid": false, "zindex": 0, "labelAlign": "right"}, {"scale": "y", "title": "Percentage", "tickCount": {"signal": "ceil(height/40)"}, "zindex": 0, "orient": "left", "grid": false, "labelOverlap": true}], "background": "white", "padding": 5, "height": 400, "style": "cell", "legends": [{"title": "Booking Status", "fill": "color", "symbolType": "square", "encode": {"symbols": {"update": {"opacity": {"value": 0.8}}}}}], "width": 800};
+      var embedOpt = {"mode": "vega"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

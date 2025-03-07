@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"$schema": "https://vega.github.io/schema/vega/v5.json", "data": [{"name": "source_0", "values": [{"__count": 48, "bin_maxbins_20_value": -2.0, "bin_maxbins_20_value_end": -1.5}, {"__count": 135, "bin_maxbins_20_value": 0.5, "bin_maxbins_20_value_end": 1.0}, {"__count": 154, "bin_maxbins_20_value": -1.0, "bin_maxbins_20_value_end": -0.5}, {"__count": 93, "bin_maxbins_20_value": -1.5, "bin_maxbins_20_value_end": -1.0}, {"__count": 177, "bin_maxbins_20_value": -0.5, "bin_maxbins_20_value_end": 0.0}, {"__count": 18, "bin_maxbins_20_value": -2.5, "bin_maxbins_20_value_end": -2.0}, {"__count": 97, "bin_maxbins_20_value": 1.0, "bin_maxbins_20_value_end": 1.5}, {"__count": 191, "bin_maxbins_20_value": 0.0, "bin_maxbins_20_value_end": 0.5}, {"__count": 60, "bin_maxbins_20_value": 1.5, "bin_maxbins_20_value_end": 2.0}, {"__count": 15, "bin_maxbins_20_value": 2.0, "bin_maxbins_20_value_end": 2.5}, {"__count": 8, "bin_maxbins_20_value": -3.0, "bin_maxbins_20_value_end": -2.5}, {"__count": 3, "bin_maxbins_20_value": 2.5, "bin_maxbins_20_value_end": 3.0}, {"__count": 1, "bin_maxbins_20_value": 3.5, "bin_maxbins_20_value_end": 4.0}]}, {"name": "source_0_y_domain___count", "values": [{"min": 1, "max": 191}]}], "signals": [{"name": "bin_maxbins_20_value_bins", "value": {"fields": ["value"], "fname": "bin_value", "start": -3.0, "step": 0.5, "stop": 4.0}}], "marks": [{"type": "rect", "name": "marks", "from": {"data": "source_0"}, "encode": {"update": {"y": {"field": "__count", "scale": "y"}, "x2": {"field": "bin_maxbins_20_value", "scale": "x", "offset": {"signal": "0.5 + (abs(scale(\"x\", datum[\"bin_maxbins_20_value_end\"]) - scale(\"x\", datum[\"bin_maxbins_20_value\"])) < 0.25 ? -0.5 * (0.25 - (abs(scale(\"x\", datum[\"bin_maxbins_20_value_end\"]) - scale(\"x\", datum[\"bin_maxbins_20_value\"])))) : 0.5)"}}, "x": {"field": "bin_maxbins_20_value_end", "scale": "x", "offset": {"signal": "0.5 + (abs(scale(\"x\", datum[\"bin_maxbins_20_value_end\"]) - scale(\"x\", datum[\"bin_maxbins_20_value\"])) < 0.25 ? 0.5 * (0.25 - (abs(scale(\"x\", datum[\"bin_maxbins_20_value_end\"]) - scale(\"x\", datum[\"bin_maxbins_20_value\"])))) : -0.5)"}}, "fill": {"value": "#4c78a8"}, "y2": {"value": 0, "scale": "y"}, "opacity": {"value": 0.6}}}, "style": ["bar"]}], "scales": [{"name": "x", "type": "linear", "domain": {"signal": "[bin_maxbins_20_value_bins.start, bin_maxbins_20_value_bins.stop]"}, "range": [0, {"signal": "width"}], "bins": {"signal": "bin_maxbins_20_value_bins"}, "zero": false}, {"name": "y", "type": "linear", "domain": [{"signal": "(data(\"source_0_y_domain___count\")[0] || {}).min"}, {"signal": "(data(\"source_0_y_domain___count\")[0] || {}).max"}], "range": [{"signal": "height"}, 0], "nice": true, "zero": true}], "axes": [{"scale": "y", "grid": true, "ticks": false, "orient": "left", "tickCount": {"signal": "ceil(height/40)"}, "zindex": 0, "maxExtent": 0, "labels": false, "domain": false, "gridScale": "x", "aria": false, "minExtent": 0}, {"scale": "x", "grid": false, "labelOverlap": true, "labelFlush": true, "labelBaseline": "top", "title": "value", "labelAlign": "left", "tickCount": {"signal": "ceil(width/10)"}, "zindex": 0, "orient": "bottom"}, {"scale": "y", "grid": false, "zindex": 0, "title": "Frequency", "orient": "left", "labelOverlap": true, "tickCount": {"signal": "ceil(height/40)"}}], "title": {"text": "Histogram (value All)", "frame": "group"}, "height": 400, "background": "white", "padding": 5, "config": {"axisX": {"labelAngle": 45}}, "width": 600, "style": "cell"};
+      var embedOpt = {"mode": "vega"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

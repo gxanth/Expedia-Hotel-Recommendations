@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"$schema": "https://vega.github.io/schema/vega/v5.json", "data": [{"name": "source_0", "values": [{"__count": 3, "bin_maxbins_5_feature_1": 1.0, "bin_maxbins_5_feature_1_end": 2.0}, {"__count": 3, "bin_maxbins_5_feature_1": 4.0, "bin_maxbins_5_feature_1_end": 5.0}]}, {"name": "source_0_y_domain___count", "values": [{"min": 3, "max": 3}]}], "signals": [{"name": "bin_maxbins_5_feature_1_bins", "value": {"fields": ["feature_1"], "fname": "bin_feature_1", "start": 1.0, "step": 1.0, "stop": 5.0}}], "marks": [{"type": "rect", "name": "marks", "from": {"data": "source_0"}, "encode": {"update": {"y": {"field": "__count", "scale": "y"}, "fill": {"value": "#4c78a8"}, "x2": {"field": "bin_maxbins_5_feature_1", "scale": "x", "offset": {"signal": "0.5 + (abs(scale(\"x\", datum[\"bin_maxbins_5_feature_1_end\"]) - scale(\"x\", datum[\"bin_maxbins_5_feature_1\"])) < 0.25 ? -0.5 * (0.25 - (abs(scale(\"x\", datum[\"bin_maxbins_5_feature_1_end\"]) - scale(\"x\", datum[\"bin_maxbins_5_feature_1\"])))) : 0.5)"}}, "x": {"field": "bin_maxbins_5_feature_1_end", "scale": "x", "offset": {"signal": "0.5 + (abs(scale(\"x\", datum[\"bin_maxbins_5_feature_1_end\"]) - scale(\"x\", datum[\"bin_maxbins_5_feature_1\"])) < 0.25 ? 0.5 * (0.25 - (abs(scale(\"x\", datum[\"bin_maxbins_5_feature_1_end\"]) - scale(\"x\", datum[\"bin_maxbins_5_feature_1\"])))) : -0.5)"}}, "y2": {"value": 0, "scale": "y"}}}, "style": ["bar"]}], "scales": [{"name": "x", "type": "linear", "domain": {"signal": "[bin_maxbins_5_feature_1_bins.start, bin_maxbins_5_feature_1_bins.stop]"}, "range": [0, {"signal": "width"}], "bins": {"signal": "bin_maxbins_5_feature_1_bins"}, "zero": false}, {"name": "y", "type": "linear", "domain": [{"signal": "(data(\"source_0_y_domain___count\")[0] || {}).min"}, {"signal": "(data(\"source_0_y_domain___count\")[0] || {}).max"}], "range": [{"signal": "height"}, 0], "nice": true, "zero": true}], "axes": [{"scale": "y", "gridScale": "x", "aria": false, "maxExtent": 0, "ticks": false, "orient": "left", "labels": false, "tickCount": {"signal": "ceil(height/40)"}, "minExtent": 0, "zindex": 0, "grid": true, "domain": false}, {"scale": "x", "labelFlush": true, "zindex": 0, "title": "feature_1", "labelOverlap": true, "orient": "bottom", "tickCount": {"signal": "ceil(width/10)"}, "grid": false}, {"scale": "y", "tickCount": {"signal": "ceil(height/40)"}, "labelOverlap": true, "zindex": 0, "grid": false, "orient": "left", "title": "Count of Records"}], "title": {"text": "Histogram of feature_1", "frame": "group"}, "background": "white", "padding": 5, "height": 300, "style": "cell", "width": 400};
+      var embedOpt = {"mode": "vega"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
