@@ -1,0 +1,30 @@
+style_rules:
+  null_pct:
+    column: null_pct
+    filter_query: "{null_pct} > 0.1"
+    backgroundColor: "#ffe6e6"
+    color: "black"
+
+  skew_right:
+    column: skew
+    filter_query: "{skew} > 1"
+    backgroundColor: "#ffcccc"
+    color: "black"
+
+  skew_left:
+    column: skew
+    filter_query: "{skew} < -1"
+    backgroundColor: "#cce5ff"
+    color: "black"
+
+  kurtosis_high:
+    column: kurt
+    filter_query: "{kurt} > 5"
+    backgroundColor: "#f3e6ff"
+    color: "black"
+
+  outlier_count:
+    column: outlier_count
+    filter_query: "{outlier_count} > 10"
+    backgroundColor: "#e6f0ff"
+    color: "black"

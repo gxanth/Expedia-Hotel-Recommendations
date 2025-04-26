@@ -1,0 +1,17 @@
+data:
+  path: "data/processed/dummy_expedia.parquet"
+
+plotting:
+  histogram_bins: 40
+  boxplot_show_outliers: true
+
+features:
+  numeric_types: ["Float64", "Int64"]
+
+outliers:
+  mad_threshold: 3.0
+  zscore_threshold: 2.5
+
+transformations:
+  prefixes: ["log_", "sqrt_", "zscore_"]
+  suffixes: ["_norm", "_mad_filtered", "_bin", "_zscore"]
