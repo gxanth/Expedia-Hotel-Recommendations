@@ -1,4 +1,4 @@
-# Byte-compiled / optimized / DLL files
+# Python cache
 __pycache__/
 *.py[cod]
 
@@ -8,6 +8,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
+.venv/
 build/
 develop-eggs/
 dist/
@@ -24,8 +25,6 @@ var/
 *.egg
 
 # PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
 
@@ -63,27 +62,26 @@ target/
 *.db
 *.rdb
 
-# Pycharm
-.idea
-
-# VS Code
+# IDEs
+.idea/
 .vscode/
-
-# Spyder
 .spyproject/
 
-# Jupyter NB Checkpoints
+# Jupyter Notebook
 .ipynb_checkpoints/
 
-# exclude data from source control by default
-/data/
+# Data folders (specific)
+data/raw/
+data/interim/
+data/external/
 
 # Mac OS-specific storage files
 .DS_Store
 
-# vim
+# vim swap files
 *.swp
 *.swo
 
 # Mypy cache
 .mypy_cache/
+
