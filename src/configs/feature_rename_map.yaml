@@ -1,0 +1,59 @@
+
+  # 🧍 User features
+site_id: expedia_site_id
+visitor_location_country_id: user_country_id
+visitor_hist_starrating: user_hist_avg_stars
+visitor_hist_adr_usd: user_hist_avg_price
+
+  # 🏨 Hotel features
+prop_id: hotel_id
+prop_country_id: hotel_country_id
+prop_starrating: hotel_star_rating
+prop_review_score: hotel_review_score
+prop_brand_bool: is_chain_hotel
+prop_location_score1: location_score_primary
+prop_location_score2: location_score_secondary
+prop_log_historical_price: log_historical_price
+
+  # 💸 Pricing features
+price_usd: display_price
+price_usd_norm: price_scaled
+gross_bookings_usd: booking_cost
+promotion_flag: has_promotion
+price_zscore: price_zscore
+price_percentile: price_percentile
+price_bucket: price_bucket
+price_gap_min: price_above_min
+price_per_person: price_per_guest
+expected_value: expected_booking_value
+
+  # 🔍 Search context
+srch_id: search_id
+srch_destination_id: destination_id
+srch_length_of_stay: stay_duration
+srch_booking_window: days_until_checkin
+srch_adults_count: num_adults
+srch_children_count: num_children
+srch_room_count: num_rooms
+srch_saturday_night_bool: includes_saturday_night
+srch_query_affinity_score: query_hotel_affinity_log
+random_bool: query_was_randomized
+
+  # 🕒 Temporal features
+date_time: search_timestamp
+date: search_date
+booking_date: expected_checkin_date
+booking_day_of_week: checkin_day_of_week
+booking_day_of_month: checkin_day_of_month
+booking_month: checkin_month
+is_booking_weekend: checkin_is_weekend
+is_weekend: is_weekend_search
+is_saturday_night: is_saturday_night
+hour: search_hour
+day_of_week: search_day_of_week
+
+  # 🧭 Ranking and interactions
+position: display_position
+click_bool: was_clicked
+booking_bool: was_booked
+target: relevance_score
