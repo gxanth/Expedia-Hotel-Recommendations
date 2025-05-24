@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "expedia-personalized-recommendations"
+version = "0.1.0"
+description = "A modular ML pipeline for Expedia hotel ranking optimization (ICDM 2013 Kaggle)."
+authors = [
+    { name = "Georgios Xanthopoulos", email = "xanthopoulos.geo@outlook.com" }
+]
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.9"
+dependencies = [
+    "xgboost==3.0.0",
+    "polars==1.24.0",
+    "pandas==2.2.3",
+    "optuna==4.3.0",
+    "numpy==2.2.3",
+    "scikit-learn==1.6.1",
+    "scipy==1.15.2",
+    "pyarrow==19.0.1",
+    "plotly==6.0.1",
+    "dash==3.0.3",
+    "dash-bootstrap-components==2.0.2",
+    "dash-bootstrap-templates==2.1.0",
+    "dash-table==5.0.0",
+    "flake8==7.0.0",
+    "black==25.1.0",
+    "python-dotenv==1.1.0",
+    "rich==14.0.0",
+    "requests==2.32.3",
+    "kaggle==1.7.4.2",
+    "PyYAML==6.0.2",
+    "matplotlib==3.10.1"
+]
+
+[project.optional-dependencies]
+dev = ["flake8", "black", "python-dotenv", "rich"]
+notebook = ["matplotlib"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
