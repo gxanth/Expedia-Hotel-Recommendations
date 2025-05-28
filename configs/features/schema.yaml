@@ -1,0 +1,76 @@
+# ───── Search Metadata ─────
+search_id: Categorical
+search_timestamp: Datetime
+expedia_site_id: Categorical
+user_country_id: Categorical
+
+# ───── User History Features ─────
+user_hist_avg_stars: Float32
+user_hist_avg_price: Float32
+
+# ───── Hotel Features ─────
+hotel_country_id: Categorical
+hotel_id: Int32
+hotel_star_rating: Float32
+hotel_review_score: Float32
+is_chain: Boolean
+location_score_primary: Float32
+location_score_secondary: Float32
+log_hist_price: Float32
+
+# ───── Ranking Position ─────
+display_position: Int16
+
+# ───── Pricing Features ─────
+display_price: Float32
+has_promotion: Boolean
+booking_value: Float32
+
+# ───── Search Context ─────
+destination_id: Categorical
+stay_duration: Int16
+days_until_checkin: Int16
+num_adults: Int8
+num_children: Int8
+num_rooms: Int8
+includes_sat_night: Boolean
+query_affinity_log: Float32
+orig_dest_distance: Float32
+is_randomized: Boolean
+
+# ───── Competitor Features ─────
+comp1_price_rank: Int8
+comp1_is_unavailable: Int8
+comp1_price_pct_diff: Float32
+
+comp2_price_rank: Int8
+comp2_is_unavailable: Int8
+comp2_price_pct_diff: Float32
+
+comp3_price_rank: Int8
+comp3_is_unavailable: Int8
+comp3_price_pct_diff: Float32
+
+comp4_price_rank: Int8
+comp4_is_unavailable: Int8
+comp4_price_pct_diff: Float32
+
+comp5_price_rank: Int8
+comp5_is_unavailable: Int8
+comp5_price_pct_diff: Float32
+
+comp6_price_rank: Int8
+comp6_is_unavailable: Int8
+comp6_price_pct_diff: Float32
+
+comp7_price_rank: Int8
+comp7_is_unavailable: Int8
+comp7_price_pct_diff: Float32
+
+comp8_price_rank: Int8
+comp8_is_unavailable: Int8
+comp8_price_pct_diff: Float32
+
+# ───── Labels ─────
+is_clicked: Boolean
+is_booked: Boolean

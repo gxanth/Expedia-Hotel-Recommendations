@@ -1,0 +1,59 @@
+feature_set: base_features
+columns:
+  # User features
+  - expedia_site_id
+  - user_country_id
+  - user_hist_avg_stars         
+  - user_hist_avg_price       
+
+  # Hotel features
+  - hotel_country_id            
+  - hotel_id                    
+  - hotel_star_rating           
+  - hotel_review_score          
+  - is_chain                    
+  - location_score_primary      
+  - location_score_secondary    
+  - log_hist_price        
+
+  # Pricing features
+  - display_price             
+  - has_promotion              
+
+  # Search context
+  - search_id
+  - destination_id              
+  - stay_duration               
+  - days_until_checkin          
+  - num_adults                  
+  - num_children                
+  - num_rooms                   
+  - includes_sat_night     
+  - orig_dest_distance
+  - is_randomized       
+
+  # Competition features 
+  - comp1_is_unavailable
+  - comp1_price_pct_diff
+  - comp1_price_rank
+  - comp2_is_unavailable
+  - comp2_price_pct_diff
+  - comp2_price_rank
+  - comp3_is_unavailable
+  - comp3_price_pct_diff
+  - comp3_price_rank
+  - comp4_is_unavailable
+  - comp4_price_pct_diff
+  - comp4_price_rank
+  - comp5_is_unavailable
+  - comp5_price_pct_diff
+  - comp5_price_rank
+  - comp6_is_unavailable
+  - comp6_price_pct_diff
+  - comp6_price_rank
+  - comp7_is_unavailable
+  - comp7_price_pct_diff
+  - comp7_price_rank
+  - comp8_is_unavailable
+  - comp8_price_pct_diff
+  - comp8_price_rank

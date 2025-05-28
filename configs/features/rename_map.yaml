@@ -1,0 +1,74 @@
+# ───── User Features ─────
+site_id: expedia_site_id                         # ID of Expedia portal used
+visitor_location_country_id: user_country_id     # User's country ID
+visitor_hist_starrating: user_hist_avg_stars     # Avg stars of hotels user previously booked
+visitor_hist_adr_usd: user_hist_avg_price         # Avg price (USD) of previous bookings
+
+# ───── Hotel Features ─────
+prop_id: hotel_id                                 # Unique hotel ID
+prop_country_id: hotel_country_id                 # Hotel's country ID
+prop_starrating: hotel_star_rating                # Official star rating (0–5)
+prop_review_score: hotel_review_score             # Average user review score (0–5)
+prop_brand_bool: is_chain                         # 1 = part of hotel chain, 0 = independent
+prop_location_score1: location_score_primary      # Primary location score (importance unclear)
+prop_location_score2: location_score_secondary    # Secondary location score (lower impact)
+prop_log_historical_price: log_hist_price         # Log of historical avg price (last trading period)
+
+# ───── Pricing Features ─────
+price_usd: display_price                          # Shown price to the user
+promotion_flag: has_promotion                     # 1 if promotion banner was shown
+gross_bookings_usd: booking_value                 # Total booking value (incl. tax/fees)
+
+# ───── Search Context ─────
+srch_id: search_id                                # Search session ID
+srch_destination_id: destination_id               # Destination ID (geo cluster)
+srch_length_of_stay: stay_duration                # Nights requested
+srch_booking_window: days_until_checkin        # Days in advance from search to check-in
+srch_adults_count: num_adults                     # Adults in search
+srch_children_count: num_children                 # Children in search
+srch_room_count: num_rooms                        # Rooms requested
+srch_saturday_night_bool: includes_sat_night      # 1 if stay includes Saturday night
+srch_query_affinity_score: query_affinity_log     # Log-probability of relevance (search-based)
+orig_destination_distance: orig_dest_distance     # Estimated user-to-hotel distance
+random_bool: is_randomized                        # 1 if result order was randomized
+
+# ───── Temporal Features ─────
+date_time: search_timestamp     
+
+# ───── Ranking / Target Features ─────
+position: display_position                        # Rank position shown (only in training set)
+click_bool: is_clicked                            # 1 if clicked
+booking_bool: is_booked                           # 1 if booked
+
+# ───── Competitor Features ─────
+comp1_rate: comp1_price_rank                      # -1 = more expensive, 0 = same, 1 = cheaper
+comp1_inv: comp1_is_unavailable                   # 1 = competitor unavailable, 0 = available
+comp1_rate_percent_diff: comp1_price_pct_diff     # % diff vs Expedia (positive if cheaper)
+
+comp2_rate: comp2_price_rank
+comp2_inv: comp2_is_unavailable
+comp2_rate_percent_diff: comp2_price_pct_diff
+
+comp3_rate: comp3_price_rank
+comp3_inv: comp3_is_unavailable
+comp3_rate_percent_diff: comp3_price_pct_diff
+
+comp4_rate: comp4_price_rank
+comp4_inv: comp4_is_unavailable
+comp4_rate_percent_diff: comp4_price_pct_diff
+
+comp5_rate: comp5_price_rank
+comp5_inv: comp5_is_unavailable
+comp5_rate_percent_diff: comp5_price_pct_diff
+
+comp6_rate: comp6_price_rank
+comp6_inv: comp6_is_unavailable
+comp6_rate_percent_diff: comp6_price_pct_diff
+
+comp7_rate: comp7_price_rank
+comp7_inv: comp7_is_unavailable
+comp7_rate_percent_diff: comp7_price_pct_diff
+
+comp8_rate: comp8_price_rank
+comp8_inv: comp8_is_unavailable
+comp8_rate_percent_diff: comp8_price_pct_diff

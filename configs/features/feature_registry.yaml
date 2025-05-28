@@ -1,0 +1,693 @@
+user_hist_avg_price:
+  name: user_hist_avg_price
+  group: user_features
+  dtype: Float32
+  required_columns: [visitor_hist_adr_usd]
+  description: "Avg. nightly price of user's past bookings"
+  tags: [historical, numeric]
+  status: active
+
+user_hist_bookings_count:
+  name: user_hist_bookings_count
+  group: user_features
+  dtype: Int32
+  required_columns: [visitor_hist_starrating]
+  description: "Number of user's past bookings"
+  tags: [historical, count]
+  status: active
+
+booking_window:
+  name: booking_window
+  group: booking_features
+  dtype: Int32
+  required_columns: [srch_ci, date_time]
+  description: "Days between search and check-in"
+  tags: [booking, time]
+  status: active
+
+booking_stay_length:
+  name: booking_stay_length
+  group: booking_features
+  dtype: Int32
+  required_columns: [srch_ci, srch_co]
+  description: "Length of stay in days"
+  tags: [booking, duration]
+  status: active
+
+price_tier:
+  name: price_tier
+  group: hotel_features
+  dtype: Categorical
+  required_columns: [display_price]
+  description: "Binned price tier for a hotel based on display_price (e.g., budget, mid, luxury). Used as an intermediate feature for entropy calculations."
+  tags: [intermediate, binning, helper]
+  status: experimental
+
+expedia_site_id:
+  name: expedia_site_id
+  group: search_features
+  dtype: Int16
+  required_columns: [expedia_site_id]
+  description: "ID of Expedia portal used"
+  tags: [search, metadata]
+  status: active
+
+user_country_id:
+  name: user_country_id
+  group: search_features
+  dtype: Int16
+  required_columns: [user_country_id]
+  description: "User's country ID"
+  tags: [search, user]
+  status: active
+
+user_hist_avg_stars:
+  name: user_hist_avg_stars
+  group: user_features
+  dtype: Float32
+  required_columns: [user_hist_avg_stars]
+  description: "Avg stars of hotels user previously booked"
+  tags: [user, history]
+  status: active
+
+user_hist_avg_price:
+  name: user_hist_avg_price
+  group: user_features
+  dtype: Float32
+  required_columns: [user_hist_avg_price]
+  description: "Avg price (USD) of previous bookings"
+  tags: [user, history]
+  status: active
+
+hotel_id:
+  name: hotel_id
+  group: hotel_features
+  dtype: Categorical  # Changed from Int32 to Categorical
+  required_columns: [hotel_id]
+  description: "Unique hotel ID"
+  tags: [hotel, id]
+  status: active
+
+hotel_country_id:
+  name: hotel_country_id
+  group: hotel_features
+  dtype: Int16
+  required_columns: [hotel_country_id]
+  description: "Hotel's country ID"
+  tags: [hotel, location]
+  status: active
+
+hotel_star_rating:
+  name: hotel_star_rating
+  group: hotel_features
+  dtype: Float32
+  required_columns: [hotel_star_rating]
+  description: "Official star rating (0–5)"
+  tags: [hotel, rating]
+  status: active
+
+hotel_review_score:
+  name: hotel_review_score
+  group: hotel_features
+  dtype: Float32
+  required_columns: [hotel_review_score]
+  description: "Average user review score (0–5)"
+  tags: [hotel, review]
+  status: active
+
+is_chain:
+  name: is_chain
+  group: hotel_features
+  dtype: Boolean
+  required_columns: [is_chain]
+  description: "1 = part of hotel chain, 0 = independent"
+  tags: [hotel, chain]
+  status: active
+
+location_score_primary:
+  name: location_score_primary
+  group: hotel_features
+  dtype: Float32
+  required_columns: [location_score_primary]
+  description: "Primary location score"
+  tags: [hotel, location]
+  status: active
+
+location_score_primary_norm:
+  name: location_score_primary_norm
+  group: hotel_features
+  dtype: Float32
+  required_columns: [location_score_primary]
+  description: "Normalized primary location score for the hotel"
+  tags: [hotel, location, normalized]
+  status: active
+
+location_score_secondary:
+  name: location_score_secondary
+  group: hotel_features
+  dtype: Float32
+  required_columns: [location_score_secondary]
+  description: "Secondary location score"
+  tags: [hotel, location]
+  status: active
+
+location_score_secondary_norm:
+  name: location_score_secondary_norm
+  group: hotel_features
+  dtype: Float32
+  required_columns: [location_score_secondary]
+  description: "Normalized secondary location score for the hotel"
+  tags: [hotel, location, normalized]
+  status: active
+
+log_hist_price:
+  name: log_hist_price
+  group: hotel_features
+  dtype: Float32
+  required_columns: [log_hist_price]
+  description: "Log of historical avg price"
+  tags: [hotel, price]
+  status: active
+
+display_position:
+  name: display_position
+  group: ranking_features
+  dtype: Int16
+  required_columns: [display_position]
+  description: "Rank position shown (only in training set)"
+  tags: [ranking, position]
+  status: active
+
+display_price:
+  name: display_price
+  group: pricing_features
+  dtype: Float32
+  required_columns: [display_price]
+  description: "Shown price to the user"
+  tags: [pricing, price]
+  status: active
+
+has_promotion:
+  name: has_promotion
+  group: pricing_features
+  dtype: Boolean
+  required_columns: [has_promotion]
+  description: "1 if promotion banner was shown"
+  tags: [pricing, promotion]
+  status: active
+
+booking_value:
+  name: booking_value
+  group: pricing_features
+  dtype: Float32
+  required_columns: [booking_value]
+  description: "Total booking value (incl. tax/fees)"
+  tags: [pricing, value]
+  status: active
+
+search_id:
+  name: search_id
+  group: search_features
+  dtype: Int32
+  required_columns: [search_id]
+  description: "Search session ID"
+  tags: [search, id]
+  status: active
+
+destination_id:
+  name: destination_id
+  group: search_features
+  dtype: Int32
+  required_columns: [destination_id]
+  description: "Destination ID (geo cluster)"
+  tags: [search, destination]
+  status: active
+
+stay_duration:
+  name: stay_duration
+  group: search_features
+  dtype: Int16
+  required_columns: [stay_duration]
+  description: "Nights requested"
+  tags: [search, duration]
+  status: active
+
+booking_window_days:
+  name: booking_window_days
+  group: search_features
+  dtype: Int16
+  required_columns: [booking_window_days]
+  description: "Days in advance from search to check-in"
+  tags: [search, booking]
+  status: active
+
+num_adults:
+  name: num_adults
+  group: search_features
+  dtype: Int8
+  required_columns: [num_adults]
+  description: "Adults in search"
+  tags: [search, guests]
+  status: active
+
+num_children:
+  name: num_children
+  group: search_features
+  dtype: Int8
+  required_columns: [num_children]
+  description: "Children in search"
+  tags: [search, guests]
+  status: active
+
+num_rooms:
+  name: num_rooms
+  group: search_features
+  dtype: Int8
+  required_columns: [num_rooms]
+  description: "Rooms requested"
+  tags: [search, rooms]
+  status: active
+
+includes_sat_night:
+  name: includes_sat_night
+  group: search_features
+  dtype: Boolean
+  required_columns: [includes_sat_night]
+  description: "1 if stay includes Saturday night"
+  tags: [search, weekend]
+  status: active
+
+query_affinity_log:
+  name: query_affinity_log
+  group: search_features
+  dtype: Float32
+  required_columns: [query_affinity_log]
+  description: "Log-probability of relevance (search-based)"
+  tags: [search, affinity]
+  status: active
+
+orig_dest_distance:
+  name: orig_dest_distance
+  group: search_features
+  dtype: Float32
+  required_columns: [orig_dest_distance]
+  description: "Estimated user-to-hotel distance"
+  tags: [search, distance]
+  status: active
+
+is_randomized:
+  name: is_randomized
+  group: search_features
+  dtype: Boolean
+  required_columns: [is_randomized]
+  description: "1 if result order was randomized"
+  tags: [search, randomized]
+  status: active
+
+search_timestamp:
+  name: search_timestamp
+  group: search_features
+  dtype: Datetime
+  required_columns: [search_timestamp]
+  description: "Timestamp of the search"
+  tags: [search, time]
+  status: active
+
+search_hour:
+  name: search_hour
+  group: search_features
+  dtype: Int8
+  required_columns: [search_timestamp]
+  description: "Hour of the day when the search was made"
+  tags: [search, time, datetime]
+  status: active
+
+search_day_of_week:
+  name: search_day_of_week
+  group: search_features
+  dtype: Int8
+  required_columns: [search_timestamp]
+  description: "Day of week (0=Monday, 6=Sunday) when the search was made"
+  tags: [search, time, datetime]
+  status: active
+
+search_week:
+  name: search_week
+  group: search_features
+  dtype: Int16
+  required_columns: [search_timestamp]
+  description: "Week number of the year when the search was made"
+  tags: [search, time, datetime]
+  status: active
+
+search_month:
+  name: search_month
+  group: search_features
+  dtype: Int8
+  required_columns: [search_timestamp]
+  description: "Month when the search was made"
+  tags: [search, time, datetime]
+  status: active
+
+search_year:
+  name: search_year
+  group: search_features
+  dtype: Int16
+  required_columns: [search_timestamp]
+  description: "Year when the search was made"
+  tags: [search, time, datetime]
+  status: active
+
+search_date:
+  name: search_date
+  group: search_features
+  dtype: Date
+  required_columns: [search_timestamp]
+  description: "Date of the search (YYYY-MM-DD)"
+  tags: [search, time, datetime]
+  status: active
+
+is_weekend_search:
+  name: is_weekend_search
+  group: search_features
+  dtype: Boolean
+  required_columns: [search_timestamp]
+  description: "1 if the search was made on a weekend"
+  tags: [search, time, weekend]
+  status: active
+
+is_holiday_search:
+  name: is_holiday_search
+  group: search_features
+  dtype: Boolean
+  required_columns: [search_timestamp]
+  description: "1 if the search was made on a US holiday"
+  tags: [search, time, holiday]
+  status: active
+
+search_time_of_day:
+  name: search_time_of_day
+  group: search_features
+  dtype: Categorical
+  required_columns: [search_timestamp]
+  description: "Time of day bucket for search: night, morning, afternoon, evening"
+  tags: [search, time, categorical]
+  status: active
+
+query_contains_opaque_properties:
+  name: query_contains_opaque_properties
+  group: booking_features
+  dtype: Boolean
+  required_columns: [display_position, search_id]
+  description: "1 if any property in the query is opaque (missing display_position)"
+  tags: [booking, query, flag]
+  status: active
+
+has_user_price_history:
+  name: has_user_price_history
+  group: user_features
+  dtype: Boolean
+  required_columns: [user_hist_avg_price]
+  description: "1 if user has historical price data"
+  tags: [user, history, flag]
+  status: active
+
+has_user_rating_history:
+  name: has_user_rating_history
+  group: user_features
+  dtype: Boolean
+  required_columns: [user_hist_avg_stars]
+  description: "1 if user has historical rating data"
+  tags: [user, history, flag]
+  status: active
+
+price_gap:
+  name: price_gap
+  group: user_features
+  dtype: Float32
+  required_columns: [display_price, user_hist_avg_price]
+  description: "Difference between current display price and user's historical avg price"
+  tags: [user, gap, price]
+  status: active
+
+star_gap:
+  name: star_gap
+  group: user_features
+  dtype: Float32
+  required_columns: [hotel_star_rating, user_hist_avg_stars]
+  description: "Difference between current hotel star rating and user's historical avg stars"
+  tags: [user, gap, rating]
+  status: active
+
+click_prob:
+  name: click_prob
+  group: booking_features
+  dtype: Float32
+  required_columns: [hotel_id, is_clicked]
+  description: "Probability of a hotel being clicked (clicks / impressions per hotel)"
+  tags: [booking, probability, hotel]
+  status: active
+
+booking_prob:
+  name: booking_prob
+  group: booking_features
+  dtype: Float32
+  required_columns: [hotel_id, is_booked]
+  description: "Probability of a hotel being booked (bookings / impressions per hotel)"
+  tags: [booking, probability, hotel]
+  status: active
+
+hotel_avg_position:
+  name: hotel_avg_position
+  group: booking_features
+  dtype: Float32
+  required_columns: [hotel_id, display_position]
+  description: "Average display position of a hotel"
+  tags: [booking, hotel, position]
+  status: active
+
+hotel_position_std:
+  name: hotel_position_std
+  group: booking_features
+  dtype: Float32
+  required_columns: [hotel_id, display_position]
+  description: "Standard deviation of display position for a hotel"
+  tags: [booking, hotel, position]
+  status: active
+
+total_guests:
+  name: total_guests
+  group: search_features
+  dtype: Int16
+  required_columns: [num_adults, num_children]
+  description: "Total number of guests (adults + children) in the search"
+  tags: [search, guests, context]
+  status: active
+
+stay_duration_bucket:
+  name: stay_duration_bucket
+  group: search_features
+  dtype: Categorical
+  required_columns: [stay_duration]
+  description: "Binned stay duration: short, medium, long"
+  tags: [search, duration, categorical]
+  status: active
+
+days_until_checkin_bucket:
+  name: days_until_checkin_bucket
+  group: search_features
+  dtype: Categorical
+  required_columns: [days_until_checkin]
+  description: "Binned days until check-in: last_minute, short_term, long_term"
+  tags: [search, booking, categorical]
+  status: active
+
+room_to_guest_ratio:
+  name: room_to_guest_ratio
+  group: search_features
+  dtype: Float32
+  required_columns: [num_rooms, num_adults, num_children]
+  description: "Ratio of rooms to total guests in the search"
+  tags: [search, rooms, guests, context]
+  status: active
+
+num_comp_cheaper:
+  name: num_comp_cheaper
+  group: competitor_features
+  dtype: Int8
+  required_columns:
+    - comp1_price_rank
+    - comp2_price_rank
+    - comp3_price_rank
+    - comp4_price_rank
+    - comp5_price_rank
+    - comp6_price_rank
+    - comp7_price_rank
+    - comp8_price_rank
+  description: "Number of competitors with cheaper rates"
+  tags: [competitor, price, count]
+  status: active
+
+num_comp_same_price:
+  name: num_comp_same_price
+  group: competitor_features
+  dtype: Int8
+  required_columns:
+    - comp1_price_rank
+    - comp2_price_rank
+    - comp3_price_rank
+    - comp4_price_rank
+    - comp5_price_rank
+    - comp6_price_rank
+    - comp7_price_rank
+    - comp8_price_rank
+  description: "Number of competitors with the same price"
+  tags: [competitor, price, count]
+  status: active
+
+num_comp_more_expensive:
+  name: num_comp_more_expensive
+  group: competitor_features
+  dtype: Int8
+  required_columns:
+    - comp1_price_rank
+    - comp2_price_rank
+    - comp3_price_rank
+    - comp4_price_rank
+    - comp5_price_rank
+    - comp6_price_rank
+    - comp7_price_rank
+    - comp8_price_rank
+  description: "Number of competitors with more expensive rates"
+  tags: [competitor, price, count]
+  status: active
+
+num_valid_comp_rate:
+  name: num_valid_comp_rate
+  group: competitor_features
+  dtype: Int8
+  required_columns:
+    - comp1_price_rank
+    - comp2_price_rank
+    - comp3_price_rank
+    - comp4_price_rank
+    - comp5_price_rank
+    - comp6_price_rank
+    - comp7_price_rank
+    - comp8_price_rank
+  description: "Number of valid competitor rate entries"
+  tags: [competitor, price, count]
+  status: active
+
+location_score_mean_norm:
+  name: location_score_mean_norm
+  group: hotel_features
+  dtype: Float32
+  required_columns: [location_score_primary, location_score_secondary]
+  description: "Normalized mean of primary and secondary location scores for the hotel"
+  tags: [hotel, location, normalized]
+  status: active
+
+location_score_primary_std:
+  name: location_score_primary_std
+  group: hotel_features
+  dtype: Float32
+  required_columns: [location_score_primary]
+  description: "Standard deviation of the primary location score for the hotel"
+  tags: [hotel, location, std]
+  status: active
+
+location_score_secondary_std:
+  name: location_score_secondary_std
+  group: hotel_features
+  dtype: Float32
+  required_columns: [location_score_secondary]
+  description: "Standard deviation of the secondary location score for the hotel"
+  tags: [hotel, location, std]
+  status: active
+
+location_score_mean_std:
+  name: location_score_mean_std
+  group: hotel_features
+  dtype: Float32
+  required_columns: [location_score_primary, location_score_secondary]
+  description: "Standard deviation of the mean of primary and secondary location scores for the hotel"
+  tags: [hotel, location, std]
+  status: active
+
+location_score_diff:
+  name: location_score_diff
+  group: hotel_features
+  dtype: Float32
+  required_columns: [location_score_primary, location_score_secondary]
+  description: "Difference between primary and secondary location scores for the hotel"
+  tags: [hotel, location, difference]
+  status: active
+
+num_competitor_unavailable:
+  name: num_competitor_unavailable
+  group: competitor_features
+  dtype: Int8
+  required_columns:
+    - comp1_is_unavailable
+    - comp2_is_unavailable
+    - comp3_is_unavailable
+    - comp4_is_unavailable
+    - comp5_is_unavailable
+    - comp6_is_unavailable
+    - comp7_is_unavailable
+    - comp8_is_unavailable
+  description: "Number of competitors that are unavailable"
+  tags: [competitor, availability, count]
+  status: active
+
+num_valid_comp_inv:
+  name: num_valid_comp_inv
+  group: competitor_features
+  dtype: Int8
+  required_columns:
+    - comp1_is_unavailable
+    - comp2_is_unavailable
+    - comp3_is_unavailable
+    - comp4_is_unavailable
+    - comp5_is_unavailable
+    - comp6_is_unavailable
+    - comp7_is_unavailable
+    - comp8_is_unavailable
+  description: "Number of valid competitor availability entries"
+  tags: [competitor, availability, count]
+  status: active
+
+mean_comp_price_diff_pct:
+  name: mean_comp_price_diff_pct
+  group: competitor_features
+  dtype: Float32
+  required_columns:
+    - comp1_price_pct_diff
+    - comp2_price_pct_diff
+    - comp3_price_pct_diff
+    - comp4_price_pct_diff
+    - comp5_price_pct_diff
+    - comp6_price_pct_diff
+    - comp7_price_pct_diff
+    - comp8_price_pct_diff
+  description: "Mean percentage difference in price compared to Expedia"
+  tags: [competitor, price, mean]
+  status: active
+
+max_comp_price_diff_pct:
+  name: max_comp_price_diff_pct
+  group: competitor_features
+  dtype: Float32
+  required_columns:
+    - comp1_price_pct_diff
+    - comp2_price_pct_diff
+    - comp3_price_pct_diff
+    - comp4_price_pct_diff
+    - comp5_price_pct_diff
+    - comp6_price_pct_diff
+    - comp7_price_pct_diff
+    - comp8_price_pct_diff
+  description: "Maximum percentage difference in price compared to Expedia"
+  tags: [competitor, price, max]
+  status: active
