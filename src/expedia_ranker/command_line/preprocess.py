@@ -31,11 +31,11 @@ def preprocess_command(
     ),
 ):
     """
-    Standardize and convert raw Expedia .csv files (Step 1 of the pipeline).:
-    - Renames columns
-    - Casts data types
-    - Adds missing columns
-    - Saves as .parquet
+    Standardize and convert raw Expedia .csv files (Step 1 of the pipeline):
+        - Renames columns
+        - Casts data types
+        - Adds missing columns
+        - Saves as .parquet
     """
     logger.info(f"Starting preprocessing: {input_dir.name} to {output_dir.name}")
 
